@@ -13,14 +13,14 @@
             do
             {
                 Console.WriteLine("Please enter a Number between 1-12 for the Table");
-                Console.WriteLine("Enter \"D\" for the default table of 12x12");
+                Console.WriteLine("Enter \"D\" for the default table of 12x12"); 
                 userInput = Console.ReadLine();
                 Console.Clear();
                 Console.WriteLine($"You enter {userInput}");
 
                 try
                 {
-                    // risky code
+                    // this is the code for selecting your own size of grid
                     for (int row = 1; row < int.Parse(userInput) + 1; row++)
                     {
                         for (int column = 1; column < int.Parse(userInput) + 1; column++)
@@ -34,7 +34,8 @@
                 }
                 catch (Exception ex)
                 {
-                    if (userInput == "D" || userInput == "d")
+                    //This is the selection for a 12 by 12 grid by default
+                    if (userInput == "D" || userInput == "d") 
                     {
                         Console.WriteLine($"You've selected the 12x12 multiplication table!");
                         for (int row = 1; row < 12 + 1; row++)
@@ -50,41 +51,12 @@
 
                     else
                     {
-                        Console.WriteLine($"You've selected the {userInput}x{userInput} multiplication table!");
-                        for (int row = 1; row < int.Parse(userInput) + 1; row++)
-                        {
-                            for (int column = 1; column < int.Parse(userInput) + 1; column++)
-                            {
-                                Console.Write((row * column).ToString().PadLeft(5));
-                            }
-                            Console.WriteLine();
-                            isValid = true;
+                        Console.WriteLine($"Thid is not a valid input, please try again");
+                            isValid = false;
                         }
                     }
-                }
+                } while (isValid == false);
 
-            }
-            while (isValid == false);
-
-                //Console.WriteLine("please enter your first number");
-                //userInput = Console.ReadLine();
-                //firstNumber = int.Parse(userInput);
-                //Console.WriteLine($"You entered {firstNumber}");
-
-                //Console.WriteLine("please enter your second number");
-                //userInput = Console.ReadLine();
-                //secondNumber = int.Parse(userInput);
-                //Console.WriteLine($"You entered {secondNumber}");
-
-                //{
-                //    for (int row = 1; row < firstNumber + 1; row++)
-                //    {
-                //        for (int column = 1; column < secondNumber + 1; column++)
-                //        {
-                //            Console.Write((row * column).ToString().PadLeft(5));
-                //        }
-                //        Console.WriteLine();
-                //    }
                 //pause
                 Console.Read();
             }
