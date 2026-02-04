@@ -4,31 +4,79 @@
     {
         static void Main(string[] args)
         {
+
             string userInput = "";
+            int result = 0;
+            bool isValid = false;
             int firstNumber, secondNumber;
 
-            Console.WriteLine("please enter your first number");
-            userInput = Console.ReadLine();
-            firstNumber = int.Parse(userInput);
-            Console.WriteLine($"You entered {firstNumber}");
-
-            Console.WriteLine("please enter your second number");
-            userInput = Console.ReadLine();
-            secondNumber = int.Parse(userInput);
-            Console.WriteLine($"You entered {secondNumber}");
-
+            do
             {
-                for (int row = 1; row < firstNumber + 1; row++)
+                Console.WriteLine("Please enter a Number between 1-12 for the Table");
+                Console.WriteLine("Enter \"D\" for the default table of 12x12");
+                userInput = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine($"You enter {userInput}");
+
+                try
                 {
-                    for (int column = 1; column < secondNumber + 1; column++)
-                    {
-                        Console.Write((row * column).ToString().PadLeft(5));
-                    }
-                    Console.WriteLine();
+                    // risky code
+                    result = int.Parse(userInput);
+                    isValid = true;
+
                 }
+                catch (Exception ex)
+                {
+                    if (userInput == "D" || userInput == "d")
+                    {
+                        for (int row = 1; row < 12 + 1; row++)
+                        {
+                            for (int column = 1; column < 12 + 1; column++)
+                            {
+                                Console.Write((row * column).ToString().PadLeft(5));
+                            }
+                            Console.WriteLine();
+                            isValid = true;
+                        }
+                    }
+
+                    else
+                    {
+                        for (int row = 1; row < int.Parse(userInput) + 1; row++)
+                        {
+                            for (int column = 1; column < int.Parse(userInput) + 1; column++)
+                            {
+                                Console.Write((row * column).ToString().PadLeft(5));
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
+            }
+            while (isValid == false);
+
+            //Console.WriteLine("please enter your first number");
+            //userInput = Console.ReadLine();
+            //firstNumber = int.Parse(userInput);
+            //Console.WriteLine($"You entered {firstNumber}");
+
+            //Console.WriteLine("please enter your second number");
+            //userInput = Console.ReadLine();
+            //secondNumber = int.Parse(userInput);
+            //Console.WriteLine($"You entered {secondNumber}");
+
+            //{
+            //    for (int row = 1; row < firstNumber + 1; row++)
+            //    {
+            //        for (int column = 1; column < secondNumber + 1; column++)
+            //        {
+            //            Console.Write((row * column).ToString().PadLeft(5));
+            //        }
+            //        Console.WriteLine();
+            //    }
                 //pause
                 Console.Read();
             }
         }
     }
-}
