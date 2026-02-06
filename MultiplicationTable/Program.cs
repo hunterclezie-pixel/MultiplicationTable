@@ -1,4 +1,11 @@
-﻿namespace MultiplicationTable
+﻿/* 
+Hunter Clezie 
+Spring 2026
+RCET2265
+MultiplicationTable
+github url: https://github.com/hunterclezie-pixel/MultiplicationTable.git
+*/
+namespace MultiplicationTable
 {
     internal class Program
     {
@@ -8,7 +15,6 @@
             string userInput = "";
             int result = 0;
             bool isValid = false;
-            int firstNumber, secondNumber;
 
             do
             {
@@ -18,47 +24,54 @@
                 Console.Clear();
                 Console.WriteLine($"You enter {userInput}");
 
-                try
+                // Accept 'D' or 'd' for default 12x12 grid
+                if (userInput == "D" || userInput == "d")
                 {
-                    // this is the code for selecting your own size of grid
-                    for (int row = 1; row < int.Parse(userInput) + 1; row++)
-                    {
-                        for (int column = 1; column < int.Parse(userInput) + 1; column++)
+                    Console.WriteLine($"You've selected the default 12 x 12 multiplication table!");
+                    for (int row = 1; row < 12 + 1; row++)
                         {
-                            Console.Write((row * column).ToString().PadLeft(5));
+                        for (int column = 1; column < 12 + 1; column++)
+                        {
+                        Console.Write((row * column).ToString().PadLeft(5));
                         }
                         Console.WriteLine();
                         isValid = true;
                     }
-
                 }
-                catch (Exception ex)
+
+                // Try to parse numeric input and validate range 1-12
+                else if (int.TryParse(userInput, out int parsed))
                 {
-                    //This is the selection for a 12 by 12 grid by default
-                    if (userInput == "D" || userInput == "d") 
+                    if (parsed >= 1 && parsed <= 12)
                     {
-                        Console.WriteLine($"You've selected the 12x12 multiplication table!");
-                        for (int row = 1; row < 12 + 1; row++)
+                        for (int row = 1; row <= parsed; row++)
                         {
-                            for (int column = 1; column < 12 + 1; column++)
+                            for (int column = 1; column <= parsed; column++)
                             {
                                 Console.Write((row * column).ToString().PadLeft(5));
                             }
-                            Console.WriteLine();
+                                Console.WriteLine();
+                            }
                             isValid = true;
-                        }
                     }
-
                     else
                     {
-                        Console.WriteLine($"Thid is not a valid input, please try again");
-                            isValid = false;
-                        }
+                        Console.WriteLine("Number must be between 1 and 12. Please try again.");
+                        isValid = false;
                     }
-                } while (isValid == false);
 
-                //pause
-                Console.Read();
-            }
+                }
+
+                //Stops the program from crashing if the user enters something other than a number or 'D'
+                else
+                {
+                    Console.WriteLine($"Thid is not a valid input, please try again");
+                    isValid = false;
+                }
+            } while (isValid == false);
+
+            //pause
+            Console.Read();
         }
     }
+}
