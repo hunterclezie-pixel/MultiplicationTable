@@ -22,9 +22,8 @@ namespace MultiplicationTable
                 Console.WriteLine("Enter \"D\" for the default table of 12x12"); 
                 userInput = Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine($"You enter {userInput}");
 
-                // Accept 'D' or 'd' for default 12x12 grid
+                //Accept 'D' or 'd' for default 12x12 grid
                 if (userInput == "D" || userInput == "d")
                 {
                     Console.WriteLine($"You've selected the default 12 x 12 multiplication table!");
@@ -39,9 +38,10 @@ namespace MultiplicationTable
                     }
                 }
 
-                // Try to parse numeric input and validate range 1-12
+                //Try to parse numeric input and validate range 1-12
                 else if (int.TryParse(userInput, out int parsed))
                 {
+                    Console.WriteLine($"You've selected the custom {userInput} x {userInput} multiplication table!");
                     if (parsed >= 1 && parsed <= 12)
                     {
                         for (int row = 1; row <= parsed; row++)
@@ -56,6 +56,7 @@ namespace MultiplicationTable
                     }
                     else
                     {
+                        //Makes sure the number is between 1 and 12 and prompts the user to try again if it's not
                         Console.WriteLine("Number must be between 1 and 12. Please try again.");
                         isValid = false;
                     }
