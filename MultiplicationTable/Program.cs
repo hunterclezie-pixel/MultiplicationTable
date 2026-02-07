@@ -38,12 +38,12 @@ namespace MultiplicationTable
                     }
                 }
 
-                //Try to parse numeric input and validate range 1-12
+                //Try to parse numeric input and validate number range 1-12
                 else if (int.TryParse(userInput, out int parsed))
                 {
-                    Console.WriteLine($"You've selected the custom {userInput} x {userInput} multiplication table!");
                     if (parsed >= 1 && parsed <= 12)
                     {
+                    Console.WriteLine($"You've selected the custom {userInput} x {userInput} multiplication table!");
                         for (int row = 1; row <= parsed; row++)
                         {
                             for (int column = 1; column <= parsed; column++)
